@@ -1,0 +1,10 @@
+from pathlib import Path
+stutter = Path("/Users/LindsayHippe/Documents/Stutter")
+
+for path in Path(stutter / 'source').glob('*.txt'):
+    with open(path) as input, open(stutter / 'preprocessed'/path.stem, 'w') as output:
+        text = input.read()
+        text = text.lower()
+        text = text.replace('(', '')
+        text = text.replace(')', '')
+        output.write(text)
